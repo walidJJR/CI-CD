@@ -17,7 +17,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.7'
+          python-version: '3.8'  # Assurez-vous que la version correspond à celle que vous utilisez
 
       - name: Install Backend Dependencies
         run: |
@@ -25,4 +25,10 @@ jobs:
           pip install -r ./requirements.txt
 
       - name: Start Backend Server
-        run: uvicorn main:app --reload &
+        run: uvicorn main:app --reload & 
+
+      # Exécuter les tests
+      - name: Test with pytest
+        run: |
+          pip install pytest
+          pytest test_main.py
